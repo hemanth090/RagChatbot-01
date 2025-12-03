@@ -5,7 +5,7 @@ fastapi==0.115.6
 uvicorn[standard]==0.34.0
 pinecone==5.4.2
 langchain==0.3.14
-langchain-core==0.3.29
+langchain-core==0.3.34
 langchain-text-splitters==0.3.4
 langchain-google-genai==2.0.8
 langchain-pinecone==0.2.8
