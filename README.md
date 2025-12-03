@@ -203,21 +203,4 @@ VITE_API_URL=http://localhost:8000  # Local development
 - LangChain 0.2.x (stable) instead of 0.3.x (cutting-edge)
 - See `deployment_issues.md` for full deployment story
 
-## 📜 License
 
-MIT License - feel free to use this project for your own purposes.
-
-## 🙏 Acknowledgments
-
-- UI inspired by [Notion](https://www.notion.so/)
-- Powered by [Google Gemini](https://ai.google.dev/)
-- Vector storage by [Pinecone](https://www.pinecone.io/)
-- Built with [LangChain](https://www.langchain.com/)
-
-## 📧 Contact
-
-For questions or issues, please open an issue on GitHub.
-
----
-
-⭐ Star this repo if you found it helpful!
