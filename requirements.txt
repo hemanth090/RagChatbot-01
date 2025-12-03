@@ -1,3 +1,4 @@
+# Dependencies for RAG Chatbot - No version constraints for Python 3.13 compatibility
 python-dotenv
 fastapi
 uvicorn[standard]
