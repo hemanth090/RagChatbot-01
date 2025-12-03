@@ -4,8 +4,8 @@ A modern RAG (Retrieval-Augmented Generation) chatbot with React frontend and Fa
 
 ## 🌐 Live Demo
 
+- **Frontend**: https://rag-chatbot-01.vercel.app
 - **Backend API**: https://ragchatbot-01.onrender.com
-- **Frontend**: Coming soon (deploy to Vercel)
 - **API Docs**: https://ragchatbot-01.onrender.com/docs
 
 ## ✨ Features
