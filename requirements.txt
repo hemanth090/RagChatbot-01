@@ -1,16 +1,32 @@
-# Dependencies for RAG Chatbot - No version constraints for Python 3.13 compatibility
+# Compatible package versions for Python 3.13
+# Core dependencies
 python-dotenv
 fastapi
 uvicorn[standard]
-pinecone-client
-langchain
-langchain-text-splitters
-langchain-google-genai
-langchain-pinecone
-langchain-core
+
+# Pinecone with compatible version
+pinecone>=5.0.0
+
+# LangChain ecosystem - using compatible versions
+langchain>=0.3.0
+langchain-core>=0.3.0
+langchain-text-splitters>=0.3.0
+langchain-google-genai>=2.0.0
+langchain-pinecone>=0.2.0
+langchain-openai>=0.2.0
+
+# Google AI
 google-generativeai
+
+# PDF processing
 pypdf
+
+# API dependencies
 requests
 python-multipart
+
+# Observability
 langsmith
-pydantic
+
+# Data validation
+pydantic>=2.0.0
