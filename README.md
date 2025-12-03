@@ -2,9 +2,19 @@
 
 A modern RAG (Retrieval-Augmented Generation) chatbot with React frontend and FastAPI backend. Upload PDF documents and chat with them using Google Gemini AI and Pinecone vector database.
 
-**Live Demo**: 
-- Frontend: `[Your Vercel URL]`
-- Backend API: `[Your Render URL]`
+## 🌐 Live Demo
+
+- **Backend API**: https://ragchatbot-01.onrender.com
+- **Frontend**: Coming soon (deploy to Vercel)
+- **API Docs**: https://ragchatbot-01.onrender.com/docs
+
+## ✨ Features
+
+- 📄 **PDF Upload**: Upload and process PDF documents
+- 💬 **AI Chat**: Ask questions about your documents using Google Gemini
+- 🔍 **Source Citations**: See which parts of the document were used to answer
+- 🗑️ **Knowledge Management**: Clear the knowledge base anytime
+- 🎨 **Premium UI**: Notion-inspired design with cream color palette
 
 ## 🎨 Design
 
@@ -14,32 +24,43 @@ Premium Notion-inspired UI with:
 - Smooth animations and micro-interactions
 - Responsive design
 
+## 🛠️ Technology Stack
+
+**Frontend:**
+- React 18 + Vite
+- Axios for API calls
+- React Icons
+- Custom CSS (Notion-inspired)
+
+**Backend:**
+- FastAPI (Python 3.11)
+- LangChain 0.2.x
+- Google Gemini (LLM)
+- Pinecone (Vector DB)
+- LangSmith (Observability)
+
 ## ⚡ Quick Start (Local Development)
 
 ### Prerequisites
 - Node.js 18+
-- Python 3.9+
+- Python 3.11
 - API keys: Google AI (Gemini), Pinecone, LangSmith (optional)
 
 ### Setup
 
-1. **Clone and install**
+1. **Clone the repository**
 ```bash
-git clone <your-repo-url>
-cd ChatBot-main
-
-# Backend
-pip install -r requirements.txt
-
-# Frontend
-cd frontend
-npm install
+git clone https://github.com/hemanth090/RagChatbot-01.git
+cd RagChatbot-01
 ```
 
-2. **Configure environment variables**
+2. **Backend Setup**
+```bash
+# Install Python dependencies
+pip install -r requirements.txt
 
-Backend `.env`:
-```env
+# Create .env file with your API keys
+cat > .env << EOF
 GOOGLE_API_KEY=your_google_api_key
 PINECONE_API_KEY=your_pinecone_api_key
 PINECONE_INDEX_NAME=rag-chatbot-index
@@ -48,14 +69,19 @@ PINECONE_REGION=us-east-1
 LANGSMITH_API_KEY=your_langsmith_key
 LANGSMITH_TRACING=true
 LANGSMITH_PROJECT=rag-chatbot
+EOF
 ```
 
-Frontend `frontend/.env`:
-```env
-VITE_API_URL=http://localhost:8000
+3. **Frontend Setup**
+```bash
+cd frontend
+npm install
+
+# Create .env for frontend
+echo "VITE_API_URL=http://localhost:8000" > .env
 ```
 
-3. **Run locally**
+4. **Run Locally**
 
 Terminal 1 - Backend:
 ```bash
@@ -72,131 +98,110 @@ Visit: http://localhost:5173
 
 ## 🚀 Deployment
 
-### Deploy Backend to Render
+### Backend (Render)
 
-1. **Push to GitHub** (if not already)
-```bash
-git init
-git add .
-git commit -m "Initial commit"
-git remote add origin <your-github-repo-url>
-git push -u origin main
-```
+**Already Deployed**: https://ragchatbot-01.onrender.com
 
-2. **Create Render Web Service**
-   - Go to [Render Dashboard](https://dashboard.render.com/)
-   - Click "New +" → "Web Service"
-   - Connect your GitHub repository
-   - Render will auto-detect `render.yaml` configuration
+To deploy your own:
 
-3. **Set Environment Variables** in Render Dashboard:
-   - `GOOGLE_API_KEY` - Your Google AI API key
-   - `PINECONE_API_KEY` - Your Pinecone API key
-   - `LANGSMITH_API_KEY` - Your LangSmith key (optional)
+1. Push to GitHub
+2. Create web service on [Render](https://render.com)
+3. Connect GitHub repository
+4. Add environment variables in Render dashboard
+5. Deploy!
 
-4. **Deploy**
-   - Render will automatically build and deploy
-   - Copy your Render URL (e.g., `https://your-app.onrender.com`)
+**Important Files:**
+- `.python-version` - Forces Python 3.11.9
+- `render.yaml` - Deployment configuration
+- `requirements.txt` - Pinned package versions
 
-### Deploy Frontend to Vercel
+### Frontend (Vercel)
 
-1. **Update Frontend API URL**
+Coming soon! Deploy to Vercel with:
 
-Create `frontend/.env.production`:
-```env
-VITE_API_URL=https://your-app.onrender.com
-```
-
-2. **Deploy to Vercel**
-
-Option A - Vercel CLI:
-```bash
-cd frontend
-npm install -g vercel
-vercel
-```
-
-Option B - Vercel Dashboard:
-   - Go to [Vercel Dashboard](https://vercel.com/dashboard)
-   - Click "Add New" → "Project"
-   - Import your GitHub repository
-   - Set Root Directory to `frontend`
-   - Add environment variable:
-     - Name: `VITE_API_URL`
-     - Value: `https://your-app.onrender.com`
-   - Click "Deploy"
-
-3. **Update CORS**
-
-After deployment, update `main.py` CORS settings:
-```python
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=[
-        "https://your-app.vercel.app",
-        "http://localhost:5173"  # Keep for local dev
-    ],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-```
-
-Commit and push to redeploy backend.
+1. Import GitHub repository
+2. Set Root Directory: `frontend`
+3. Add environment variable: `VITE_API_URL=https://ragchatbot-01.onrender.com`
+4. Deploy!
 
 ## 📁 Project Structure
 
 ```
-ChatBot/
-├── frontend/              # React + Vite
-│   ├── src/
-│   │   ├── components/   # UI components
-│   │   ├── services/     # API client
-│   │   ├── App.jsx
-│   │   └── index.css     # Design system
-│   ├── vercel.json       # Vercel config
-│   └── package.json
-├── main.py               # FastAPI backend
-├── rag_service.py        # RAG logic
-├── render.yaml           # Render config
-└── requirements.txt
+RagChatbot-01/
+├── .python-version       # Python 3.11.9
+├── main.py              # FastAPI backend
+├── rag_service.py       # RAG logic
+├── requirements.txt     # Python dependencies
+├── render.yaml          # Render config
+├── .env                 # API keys (gitignored)
+└── frontend/
+    ├── src/
+    │   ├── components/  # UI components
+    │   ├── services/    # API client
+    │   ├── App.jsx
+    │   └── index.css    # Design system
+    ├── vercel.json      # Vercel config
+    └── package.json
 ```
 
-## 🛠️ Technology Stack
+## 🔑 Environment Variables
 
-**Frontend:**
-- React 18 + Vite
-- Axios
-- React Icons
-- Custom CSS (Notion-inspired)
+### Backend (.env)
+```env
+GOOGLE_API_KEY=          # Get from https://ai.google.dev/
+PINECONE_API_KEY=        # Get from https://www.pinecone.io/
+PINECONE_INDEX_NAME=rag-chatbot-index
+PINECONE_CLOUD=aws
+PINECONE_REGION=us-east-1
+LANGSMITH_API_KEY=       # Optional: https://smith.langchain.com/
+LANGSMITH_TRACING=true
+LANGSMITH_PROJECT=rag-chatbot
+```
 
-**Backend:**
-- FastAPI
-- LangChain
-- Google Gemini (LLM)
-- Pinecone (Vector DB)
-- LangSmith (Observability)
+### Frontend (.env)
+```env
+VITE_API_URL=http://localhost:8000  # Local development
+# VITE_API_URL=https://ragchatbot-01.onrender.com  # Production
+```
 
-## 📝 Usage
+## 📖 API Endpoints
 
-1. **Upload PDF**: Drag and drop or click to upload PDF documents
-2. **Wait for Processing**: System will chunk and index the document
-3. **Ask Questions**: Type questions about your document
+- `POST /upload` - Upload PDF document
+- `POST /chat` - Send message and get AI response
+- `POST /clear` - Clear knowledge base
+- `GET /health` - Health check
+- `GET /docs` - Interactive API documentation (Swagger)
+
+## 🎯 Usage
+
+1. **Upload a PDF**: Drag and drop or click to upload
+2. **Wait for Processing**: System chunks and indexes your document
+3. **Ask Questions**: Type questions about the uploaded document
 4. **View Sources**: Expand source citations to see relevant chunks
+5. **Clear Knowledge**: Remove all documents when done
 
-## 🔧 Configuration
+## 🐛 Troubleshooting
 
-### Environment Variables
+### Backend won't start
+- Check Python version: `python --version` (should be 3.11.x)
+- Verify API keys in `.env` file
+- Check Pinecone index exists
 
-| Variable | Description | Required |
-|----------|-------------|----------|
-| `GOOGLE_API_KEY` | Google AI API key for Gemini | Yes |
-| `PINECONE_API_KEY` | Pinecone API key | Yes |
-| `PINECONE_INDEX_NAME` | Pinecone index name | Yes |
-| `PINECONE_CLOUD` | Cloud provider (aws) | Yes |
-| `PINECONE_REGION` | Region (us-east-1) | Yes |
-| `LANGSMITH_API_KEY` | LangSmith API key | No |
-| `VITE_API_URL` | Backend API URL | Yes |
+### Frontend shows "Disconnected"
+- Ensure backend is running on port 8000
+- Check `VITE_API_URL` in frontend `.env`
+- Verify CORS settings in `main.py`
+
+## 📝 Deployment Notes
+
+**Python Version:**
+- Uses Python 3.11.9 (not 3.13) for package compatibility
+- `.python-version` file ensures correct version on Render
+
+**Package Versions:**
+- All packages pinned to exact versions
+- LangChain 0.2.x (stable) instead of 0.3.x (cutting-edge)
+- See `deployment_issues.md` for full deployment story
 
 ## 📜 License
 
@@ -208,3 +213,11 @@ MIT License - feel free to use this project for your own purposes.
 - Powered by [Google Gemini](https://ai.google.dev/)
 - Vector storage by [Pinecone](https://www.pinecone.io/)
 - Built with [LangChain](https://www.langchain.com/)
+
+## 📧 Contact
+
+For questions or issues, please open an issue on GitHub.
+
+---
+
+⭐ Star this repo if you found it helpful!
