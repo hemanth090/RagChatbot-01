@@ -1,4 +1,7 @@
 # Compatible package versions for Python 3.13
+# Pin PyYAML to version with pre-built wheels
+pyyaml==6.0.2
+
 # Core dependencies
 python-dotenv
 fastapi
